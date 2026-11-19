@@ -2,23 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BMI Calculator</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-<div class="container">
+<main class="container">
     <h1>BMI Calculator</h1>
+    <p class="subtitle">Calculate your Body Mass Index based on WHO ranges.</p>
 
     <form action="/calculate-bmi" method="POST">
-        <label>Weight (kg)</label>
-        <input type="number" name="weight" step="0.1" required>
+        <label for="weight">Weight (kg)</label>
+        <input id="weight" type="number" name="weight" step="0.1" min="1" placeholder="e.g. 70" required />
 
-        <label>Height (m)</label>
-        <input type="number" name="height" step="0.01" required>
+        <label for="height">Height</label>
+        <div class="input-row">
+            <input id="height" type="number" name="height" step="0.01" min="0.4" placeholder="e.g. 1.75" required />
+            <select name="unit" aria-label="Height unit">
+                <option value="m" selected>m</option>
+                <option value="cm">cm</option>
+            </select>
+        </div>
 
-        <button type="submit">Calculate</button>
+        <button type="submit">Calculate BMI</button>
     </form>
-</div>
+</main>
 </body>
 </html>
