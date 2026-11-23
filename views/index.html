@@ -13,12 +13,12 @@
 
     <form action="/calculate-bmi" method="POST">
         <label for="weight">Weight (kg)</label>
-        <input id="weight" type="number" name="weight" step="0.1" min="1" placeholder="e.g. 70" required />
+        <input id="weight" type="number" name="weight" step="0.1" min="1" max="500" placeholder="e.g. 72" required />
 
         <label for="height">Height</label>
         <div class="input-row">
-            <input id="height" type="number" name="height" step="0.01" min="0.4" placeholder="e.g. 1.75" required />
-            <select name="unit" aria-label="Height unit">
+            <input id="height" type="number" name="height" step="0.01" min="0.4" max="3" placeholder="e.g. 1.78" required />
+            <select id="unit" name="unit" aria-label="Height unit">
                 <option value="m" selected>m</option>
                 <option value="cm">cm</option>
             </select>
@@ -26,6 +26,32 @@
 
         <button type="submit">Calculate BMI</button>
     </form>
+
+    <section class="who-legend" aria-label="WHO BMI categories">
+        <div class="legend-item"><span class="dot blue"></span><span>Underweight</span><strong>&lt; 18.5</strong></div>
+        <div class="legend-item"><span class="dot green"></span><span>Normal</span><strong>18.5 – 24.9</strong></div>
+        <div class="legend-item"><span class="dot orange"></span><span>Overweight</span><strong>25.0 – 29.9</strong></div>
+        <div class="legend-item"><span class="dot red"></span><span>Obese</span><strong>&ge; 30.0</strong></div>
+    </section>
 </main>
+<script>
+    const unitSelect = document.getElementById('unit');
+    const heightInput = document.getElementById('height');
+    if (unitSelect && heightInput) {
+        unitSelect.addEventListener('change', () => {
+            if (unitSelect.value === 'cm') {
+                heightInput.placeholder = 'e.g. 178';
+                heightInput.step = '0.5';
+                heightInput.min = '40';
+                heightInput.max = '300';
+            } else {
+                heightInput.placeholder = 'e.g. 1.78';
+                heightInput.step = '0.01';
+                heightInput.min = '0.4';
+                heightInput.max = '3';
+            }
+        });
+    }
+</script>
 </body>
 </html>

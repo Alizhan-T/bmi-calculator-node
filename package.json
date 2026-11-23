@@ -1,13 +1,23 @@
 {
   "name": "bmi-calculator-node",
   "version": "1.1.0",
-  "description": "Body Mass Index (BMI) web calculator and JSON API built with Node.js and Express.",
+  "description": "Body Mass Index (BMI) web calculator and JSON API built with Node.js and Express 5.",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
+  "engines": {
+    "node": ">=18.0.0"
   },
-  "keywords": ["bmi", "calculator", "express", "nodejs"],
-  "author": "Alizhan-T",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "bmi",
+    "calculator",
+    "express",
+    "nodejs",
+    "rest-api"
+  ],
+  "author": "Alizhan Toleukhan",
   "license": "MIT",
   "dependencies": {
     "express": "^5.2.1"
